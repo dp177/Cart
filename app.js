@@ -34,14 +34,14 @@ app.use("/products",productRouter);
 app.listen(3000);
 
 
-// app.get("/", (req, res) => {
-//     res.render("home", { error: req.flash("error") }); 
-// });
-
-
 app.get("/", (req, res) => {
-    res.send("hello welcome");
+    res.render("home", { error: req.flash("error") }); 
 });
+
+
+// app.get("/", (req, res) => {
+//     res.send("hello welcome");
+// });
 
 app.get("/shop", isLoggedin, async (req, res) => {
     let { sort, minPrice, maxPrice, search } = req.query;
