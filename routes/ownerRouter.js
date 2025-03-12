@@ -15,6 +15,9 @@ router.get("/admin", function (req, res) {
  console.log(process.env.NODE_ENV);
 
 router.get("/createproduct",(req,res)=>{
+    if (process.env.NODE_ENV !== "development") {
+        return res.status(403).send("This route is only available in development mode.");
+    }
     let success = req.flash("success");
     res.render("createproduct",{success});
 })
