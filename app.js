@@ -105,4 +105,4 @@ app.get("/checkout", isLoggedin, async (req, res) => {
     res.render("checkout");
 });
 
-
+module.exports = app;
