@@ -11,16 +11,26 @@ const productRouter = require('./routes/productsRouter');
 const isLoggedin = require('./middlewares/isLoggedin');
 const productModel = require('./models/product-model');
 const userModel = require('./models/user-model');
-const expresSession = require('express-session');
+
 const flash = require('connect-flash');
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+require('dotenv').config();
 
-
-app.use(expresSession({
+app.use(session({
+    store: MongoStore.create({
+        mongoUrl: process.env.MONGODB_URI, // ✅ Match with `.env`
+        collectionName: 'sessions'
+    }),
     secret: "ducky",
     resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false } 
+    saveUninitialized: false,
+    cookie: { secure: false }
 }));
+
+
+
+
 app.use(flash());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
