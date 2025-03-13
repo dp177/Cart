@@ -29,7 +29,7 @@ module.exports.registerUser = async function (req, res) {
             _id: user._id
         };
 
-        res.send(newUser); // ✅ Only send safe data
+        return res.render("success_page",{ success: true, message: "User Registered Successfully" });
 
     } catch (error) {
         console.log(error.message);
