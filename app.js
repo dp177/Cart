@@ -73,7 +73,7 @@ app.get("/shop", isLoggedin, async (req, res) => {
     if (sort) {
         if (sort === "low") query = query.sort({ price: 1 });
         if (sort === "high") query = query.sort({ price: -1 });
-        if (sort === "latest") query = query.sort({ createdAt: -1 });
+        if (sort === "latest") query = query.sort({ _id: -1 }); 
         if (sort === "popular") query = query.sort({ popularity: -1 });
     }
 
