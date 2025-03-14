@@ -3,7 +3,13 @@ const router = express.Router();
 const ownerModel = require("../models/owner-model");
 
 router.get("/", function (req, res) {
-    res.send("meaw");
+    if (process.env.NODE_ENV !== "development") {
+        return res.status(403).send("This route is only available in development mode.");
+    }
+    else
+    {
+        res.send("welcome sirrr");
+    }
 });
 router.get("/admin", function (req, res) {
     let success = req.flash("success");
