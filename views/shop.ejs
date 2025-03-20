@@ -101,7 +101,7 @@
                             <h3 class="text-lg font-semibold text-gray-800"><%= product.name %></h3>
                             <p class="text-gray-600 line-through">$<%= product.price %></p>
                             <p class="text-green-500">
-                                $<%= (product.price - (product.price * product.discount / 100)).toFixed(2) %>
+                                $<%= product.discount %>
                             </p>
                         </div>
 
